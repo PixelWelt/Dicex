@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DICEX</title>
+        <link rel="stylesheet" type="text/css" href="style.css"></link>
+    </head>
+    <body id="home">
+        <a href="index.html">
+            <button class="white-btn" id="back" >
+                <img src="img/home.svg" alt="arrow to indicate back to menu" id="back-arrow">
+            </button>
+        </a>
+        <div class="die-box">Player <br><span id="player">0</span></div>
+        <div class="die-box" id="sips-box">Sips <br><span id="sips">0</span></div>
+        <div id="controls">
+            <button id="roll" onclick="rollDie()"><img src="img/dice-6.svg" alt="arrow to indicate back to menu"> <span>roll</span><span id="average-game">0,0</span></button>
+        </div>
+    </body>
+    <script>
+        FANFARE = new Audio("sounds/fanfare.mp3");
+        DIE_SOUND = new Audio("sounds/dice.mp3");
+        FANFARE.preload = "auto";
+        DIE_SOUND.preload = "auto";
+        DIE_1 = [1,2,3,4,5,6];
+        DIE_2 = [1,2,3,1,2,3];
+        DIE_3 = [4,5,6,4,5,6];
+        DIE_4 = [1,1,1,6,6,6];
+        DIE_5 = [2,2,5,5,5,5];
+        DIE_6 = [1,3,6,1,3,6];
+        DIE_7 = [1,2,4,4,5,5];
+        DIE_8 = [1,2,6,6,6,6];
+        DIE_9 = [1,2,2,3,3,4];
+        DIE_LIST = [DIE_1, DIE_2, DIE_3, DIE_4, DIE_5, DIE_6, DIE_7, DIE_8, DIE_9];
+        // Thanks to @Tomalak for his answer on https://stackoverflow.com/questions/814613/how-to-read-get-data-from-a-url-using-javascript
+        function parseURLParams(url) {
+            var queryStart = url.indexOf("?") + 1,
+                queryEnd   = url.indexOf("#") + 1 || url.length + 1,
+                query = url.slice(queryStart, queryEnd - 1),
+                pairs = query.replace(/\+/g, " ").split("&"),
+                parms = {}, i, n, v, nv;
+
+            if (query === url || query === "") return;
+
+            for (i = 0; i < pairs.length; i++) {
+                nv = pairs[i].split("=", 2);
+                n = decodeURIComponent(nv[0]);
+                v = decodeURIComponent(nv[1]);
+
+                if (!parms.hasOwnProperty(n)) parms[n] = [];
+                parms[n].push(nv.length === 2 ? v : null);
+            }
+            return parms;
+        }
+
+        gameDie = parseURLParams(window.location.href)["die"][0]
+        sipBox = document.getElementById("sips-box");
+        if (gameDie == 2 || gameDie == 9){
+            //Difficulty easy
+            sipBox.style.backgroundColor = "rgba(0, 102, 0, 0.9)";
+        }else if(gameDie == 3 || gameDie == 5 || gameDie == 8){
+            //Difficulty hard
+            sipBox.style.backgroundColor = "rgba(132, 25, 25, 0.9)";
+        }else{
+            //Difficulty medium
+            sipBox.style.backgroundColor = "rgba(204, 105, 0, 0.9)";
+        }
+        sum = DIE_LIST[gameDie-1].reduce((a,b) => a + b);
+        average = sum/DIE_LIST[gameDie-1].length;
+        document.getElementById("average-game").innerHTML = average.toFixed(1).replace(".", ',');
+
+        function rollDie(){
+            document.getElementById("roll").disabled = true;
+            DIE_SOUND.play();
+            currentDie = DIE_LIST[gameDie-1]; 
+            sips = currentDie[Math.floor(Math.random() * currentDie.length)];
+            player = Math.floor(Math.random() * 6) + 1;
+            animateDie(sips, player);
+        }
+
+        // How long you want the animation to take, in ms
+        const animationDuration = 700;
+        // Calculate how long each ‘frame’ should last if we want to update the animation 60 times per second
+        const frameDuration = 1000 / 60;
+        // Use that to calculate how many frames we need to complete the animation
+        const totalFrames = Math.round( animationDuration / frameDuration );
+        // An ease-out function that slows the count as it progresses
+        const easeOutQuad = t => t * ( 2 - t );
+
+        function animateDie(sips, player){
+            currentFrame = 0;
+            max_die_value = Math.max(...DIE_LIST[gameDie-1]);
+            const counter = setInterval( () => {
+                currentFrame++;
+                const progress = easeOutQuad( currentFrame / totalFrames );
+                const currentSips = Math.floor(Math.random()*max_die_value);
+                const currentPlayer = Math.floor(Math.random()*6);
+                document.getElementById("sips").innerHTML = currentSips;
+                document.getElementById("player").innerHTML = currentPlayer;
+                if (currentFrame === totalFrames) {
+                    if(sips == player){
+                        //when the player scores a double a special sound should be played
+                        FANFARE.play();
+                        console.log("Fanfare");
+                    }
+                    document.getElementById("sips").innerHTML = sips;
+                    document.getElementById("player").innerHTML = player;
+                    
+                    clearInterval( counter );
+                }
+            }, frameDuration );
+            document.getElementById("roll").disabled = false;
+            
+        }
+    </script>
+</html>

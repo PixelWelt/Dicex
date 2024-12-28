@@ -1,0 +1,166 @@
+:root{
+    --main-bg-color: black;
+    --hard-color: #841919;
+    --medium-color: #CC6900;
+    --easy-color: #006600;
+    --text-color: #EDF2F4; 
+    --button-color: #151515;
+}
+
+body{
+    background-color: var(--main-bg-color);
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#home{
+    background-image: url("/img/logo_portrait.jpeg");
+}
+#easy-page{
+    background-image: url("/img/logo_green.png");
+}
+#medium-page{
+    background-image: url("/img/logo_orange.png");
+}
+#hard-page{
+    background-image: url("/img/logo_red.png");
+}
+h1{
+    color: var(--text-color);
+}
+#easy{
+    border: solid 0.2em var(--easy-color);
+}
+#medium{
+    border: solid 0.2em var(--medium-color);
+}
+#hard{
+    border: solid 0.2em var(--hard-color);
+}
+.white-btn{
+    border: solid 0.2em var(--text-color);
+}
+button:active{
+    transform: translateY(0.2rem);
+}
+
+button{
+    position: relative;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    display: flex; 
+    gap: 1em;
+    padding: 0.5em;
+    width: 80vw;
+    margin: 1.2em;
+    background-color: var(--button-color);
+    color: var(--text-color);
+    font-family: serif;
+    font-size: 2.5vh;
+    height: 6vh;
+    border-radius: 20px;
+}
+button img{
+    filter: invert(100%) brightness(100%);
+    position: absolute;
+    left: 10px; 
+    top: 50%;
+    transform: translateY(-50%);
+    height: 80%;
+}
+button span{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+button .average{
+    position: absolute;
+    right: 15px;
+    left: 82%;
+    text-wrap: nowrap;
+    text-align: left;   
+    top: 50%;
+    transform: translateY(-50%);
+}
+button .average::before{
+    content: "⌀ ";
+}
+.buttons{
+    padding: 20px;
+    margin-bottom: 0.1em;
+    
+}
+#back{
+    position: absolute;
+    top: 0;
+    left: 5%;
+    padding: 0.2em;
+    width: fit-content;
+    color: var(--text-color);
+    font-size: 2.5vh;
+    border-radius: 20px;  
+}
+#back-arrow{
+    position: relative;
+    padding: 0.2em;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    transform: translateY(0%);
+}
+#controls{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#roll{
+    height: 12vh;
+}
+#roll span{
+    font-size: 3vh;
+    text-wrap: nowrap;
+}
+#controls button{
+    justify-content: center !important;
+    margin: 0.2em;
+}
+.die-box{
+    font-size: 3vh;
+    font-weight: bold;
+    padding: 2vh;
+    margin: 0.5vh;
+    border-radius: 20px;
+    border: solid black 5px;
+    background-color: rgba(2555,255,255,0.9);
+    width: 8vh;
+    text-align: center;
+}
+.die-box span{
+    font-weight: 100;
+    font-size: 10vh;
+}
+#average-game{
+    left: 82%;
+}
+#average-game::before{
+    content: "⌀ ";
+}
+
+@media (min-width:1025px){
+    button{
+        width: 20vw;
+    }
+    
+}
