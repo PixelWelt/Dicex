@@ -180,5 +180,8 @@ button .average::before{
     button{
         width: 20vw;
     }
+    .rules{
+        font-size: 1.2rem;
+    }
     
 }
