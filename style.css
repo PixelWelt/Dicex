@@ -138,7 +138,7 @@ button .average::before{
     margin: 0.2em;
 }
 .die-box{
-    font-size: 3vh;
+    font-size: 4em;
     font-weight: bold;
     padding: 2vh;
     margin: 0.5vh;
@@ -161,8 +161,8 @@ button .average::before{
 #average-game::before{
     content: "⌀ ";
 }
-#game {
-    top: 210%;
+#rules {
+    top: 200%;
 }
 .rules{
     background-color: rgba(21, 21, 21,0.9);
