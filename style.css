@@ -23,16 +23,16 @@ body{
 }
 
 #home{
-    background-image: url("/img/logo_portrait.jpeg");
+    background-image: url("img/logo_portrait.jpeg");
 }
 #easy-page{
-    background-image: url("/img/logo_green.png");
+    background-image: url("img/logo_green.png");
 }
 #medium-page{
-    background-image: url("/img/logo_orange.png");
+    background-image: url("img/logo_orange.png");
 }
 #hard-page{
-    background-image: url("/img/logo_red.png");
+    background-image: url("img/logo_red.png");
 }
 h1{
     color: var(--text-color);
