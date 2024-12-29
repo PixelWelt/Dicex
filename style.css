@@ -170,6 +170,7 @@ button .average::before{
     padding: 2vh;
     border-radius: 20px;
     border: solid 0.2em var(--text-color);
+    font-size: 1vh;
 }
 .rules h1{
     color: var(--text-color);
