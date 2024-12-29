@@ -1,11 +1,11 @@
 # DiceEx
 
-DiceEx is an exciting and interactive dice game that you can play on your device. Roll the dice and test your luck!
+DiceEx is an exciting and interactive dice game that you can now play on your device. The first online game of the famous drinking game Dicex also known as "Würfeln und schlürflen" or "Würfels Ex". Roll the dice and test your luck!
 
 ## Features
 
 - Simple and intuitive interface
-- Realistic dice rolling animation
+- Realistic dice rolling sound
 - Customizable settings
 
 ## Rules
