@@ -145,7 +145,7 @@ button .average::before{
     border-radius: 20px;
     border: solid black 5px;
     background-color: rgba(2555,255,255,0.9);
-    width: 8vh;
+    width: 9vh;
     text-align: center;
 }
 .die-box span{
