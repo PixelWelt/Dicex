@@ -162,7 +162,7 @@ button .average::before{
     content: "⌀ ";
 }
 #rules {
-    top: 200%;
+    top: 190%;
 }
 .rules{
     background-color: rgba(21, 21, 21,0.9);
