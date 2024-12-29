@@ -108,7 +108,9 @@
                     clearInterval( counter );
                 }
             }, frameDuration );
-            document.getElementById("roll").disabled = false;
+            setTimeout(() => {
+                document.getElementById("roll").disabled = false;
+            }, 650);
             
         }
     </script>
