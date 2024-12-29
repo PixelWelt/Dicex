@@ -183,5 +183,8 @@ button .average::before{
     .rules{
         font-size: 1.2rem;
     }
+    .die-box span{
+        font-size: 2rem;
+    }
     
 }
