@@ -149,6 +149,9 @@ button .average::before{
     text-align: center;
 }
 .die-box span{
+    text-align: center;
+}
+#player, #sips{
     font-weight: 100;
     font-size: 10vh;
 }
@@ -157,6 +160,19 @@ button .average::before{
 }
 #average-game::before{
     content: "⌀ ";
+}
+#game {
+    top: 210%;
+}
+.rules{
+    background-color: rgba(21, 21, 21,0.9);
+    color: var(--text-color);
+    padding: 2vh;
+    border-radius: 20px;
+    border: solid 0.2em var(--text-color);
+}
+.rules h1{
+    color: var(--text-color);
 }
 
 @media (min-width:1025px){
